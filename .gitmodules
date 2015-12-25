@@ -4,3 +4,6 @@
 [submodule "include/PHPMailer"]
 	path = include/phpmailer
 	url = https://github.com/PHPMailer/PHPMailer.git
+[submodule "include/smarty"]
+	path = include/smarty
+	url = https://github.com/smarty-php/smarty.git
