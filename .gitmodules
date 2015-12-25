@@ -1,3 +1,6 @@
 [submodule "include/portable-utf8"]
 	path = include/portable-utf8
 	url = https://github.com/voku/portable-utf8.git
+[submodule "include/PHPMailer"]
+	path = include/phpmailer
+	url = https://github.com/PHPMailer/PHPMailer.git
