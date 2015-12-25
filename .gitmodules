@@ -1,0 +1,3 @@
+[submodule "include/portable-utf8"]
+	path = include/portable-utf8
+	url = https://github.com/voku/portable-utf8.git
