@@ -58,6 +58,7 @@ $main_checkboxes = array(
     'log',
     'history_admin',
     'history_guest',
+    'utf8_charset',
    );
 
 $sizes_checkboxes = array(

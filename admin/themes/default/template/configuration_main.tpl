@@ -184,6 +184,14 @@ jQuery("input[name='mail_theme']").change(function() {
       </li>
 
       <li>
+        <label class="font-checkbox">
+          <span class="icon-check"></span>
+          <input type="checkbox" name="utf8_charset" {if ($main.utf8_charset)}checked="checked"{/if}>
+          {'Use the UTF-8 (Unicode) charset'|translate}
+        </label>
+      </li>
+
+      <li>
         <label>{'Mail theme'|translate}</label>
 
         <div class="themeBoxes font-checkbox">

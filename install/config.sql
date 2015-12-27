@@ -20,6 +20,7 @@ INSERT INTO piwigo_config (param,value,comment) VALUES ('rate_anonymous','true',
 INSERT INTO piwigo_config (param,value,comment) VALUES ('page_banner','','html displayed on the top each page of your gallery');
 INSERT INTO piwigo_config (param,value,comment) VALUES ('history_admin','false','keep a history of administrator visits on your website');
 INSERT INTO piwigo_config (param,value,comment) VALUES ('history_guest','true','keep a history of guest visits on your website');
+INSERT INTO piwigo_config (param,value,comment) VALUES ('utf8_charset','false','use the UTF-8 (Unicode) charset');
 INSERT INTO piwigo_config (param,value,comment) VALUES ('allow_user_registration','true','allow visitors to register?');
 INSERT INTO piwigo_config (param,value,comment) VALUES ('allow_user_customization','true','allow users to customize their gallery?');
 INSERT INTO piwigo_config (param,value,comment) VALUES ('nb_categories_page','12','Param for categories pagination');
