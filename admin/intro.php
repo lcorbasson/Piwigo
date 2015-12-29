@@ -253,6 +253,14 @@ switch (pwg_image::get_library())
     {
       $library .= ' ' . $match[1];
     }
+    else
+    {
+      exec($conf['ext_imagick_dir'].'gm convert -version', $returnarray);
+      if (preg_match('/(GraphicsMagick \d+\.\d+\.\d+-?\d*)/', $returnarray[0], $match))
+      {
+        $library .= ' ' . $match[1];
+      }
+    }
     $template->assign('GRAPHICS_LIBRARY', $library);
     break;
 

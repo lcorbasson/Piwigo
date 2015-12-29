@@ -346,6 +346,18 @@ class pwg_image
       }
       return true;
     }
+    else
+    {
+      @exec($conf['ext_imagick_dir'].'gm convert -version', $returnarray);
+      if (is_array($returnarray) and !empty($returnarray[0]) and preg_match('/GraphicsMagick/i', $returnarray[0]))
+      {
+        if (preg_match('/(GraphicsMagick \d+\.\d+\.\d+-?\d*)/', $returnarray[0], $match))
+        {
+          self::$ext_imagick_version = $match[1];
+        }
+        return true;
+      }
+    }
     return false;
   }
 
@@ -637,7 +649,8 @@ class image_ext_imagick implements imageInterface
     }
 
     $exec = $this->imagickdir.'convert';
-    $exec .= ' "'.realpath($this->source_filepath).'"';
+    if(empty(shell_exec($exec.' -version 2>/dev/null'))) $exec = $this->imagickdir.'gm convert';
+    $exec .= ' "'.realpath($this->source_filepath).'"'; // TODO: see if escaping is necessary
 
     foreach ($this->commands as $command => $params)
     {

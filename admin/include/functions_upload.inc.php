@@ -280,6 +280,7 @@ SELECT
     prepare_directory(dirname($representative_file_path));
 
     $exec = $conf['ext_imagick_dir'].'convert';
+    if(empty(shell_exec($exec.' -version 2>/dev/null'))) $exec = $conf['ext_imagick_dir'].'gm convert';
 
     if ('jpg' == $conf['tiff_representative_ext'])
     {
@@ -333,10 +334,11 @@ SELECT
     $second = 1;
     
     $ffmpeg = $conf['ffmpeg_dir'].'ffmpeg';
-    $ffmpeg.= ' -i "'.$file_path.'"';
+    if(empty(shell_exec($ffmpeg.' -version 2>/dev/null'))) $ffmpeg = $conf['ffmpeg_dir'].'avconv';
+    $ffmpeg.= ' -i "'.$file_path.'"'; // TODO: see if escaping is necessary
     $ffmpeg.= ' -an -ss '.$second;
     $ffmpeg.= ' -t 1 -r 1 -y -vcodec mjpeg -f mjpeg';
-    $ffmpeg.= ' "'.$representative_file_path.'"';
+    $ffmpeg.= ' "'.$representative_file_path.'"'; // TODO: see if escaping is necessary
     
     // file_put_contents('/tmp/ffmpeg.log', "\n==== ".date('c')."\n".__FUNCTION__.' : '.$ffmpeg."\n", FILE_APPEND);
     
@@ -359,11 +361,12 @@ SELECT
     prepare_directory(dirname($representative_file_path));
     
     $exec = $conf['ext_imagick_dir'].'convert';
+    if(empty(shell_exec($exec.' -version 2>/dev/null'))) $exec = $conf['ext_imagick_dir'].'gm convert';
     $exec.= ' -quality 98';
-    $exec.= ' "'.realpath($file_path).'"[0]';
+    $exec.= ' "'.realpath($file_path).'"[0]'; // TODO: see if escaping is necessary
 
     $dest = pathinfo($representative_file_path);
-    $exec.= ' "'.realpath($dest['dirname']).'/'.$dest['basename'].'"';
+    $exec.= ' "'.realpath($dest['dirname']).'/'.$dest['basename'].'"'; // TODO: see if escaping is necessary
     $exec.= ' 2>&1';
     @exec($exec, $returnarray);
   }
